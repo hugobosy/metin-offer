@@ -10,7 +10,9 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
         <Header />
       </div>
       <main>{children}</main>
-      <Footer />
+      <div className={styles.footer}>
+        <Footer />
+      </div>
     </div>
   );
 };
