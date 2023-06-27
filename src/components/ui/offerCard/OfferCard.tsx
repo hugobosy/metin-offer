@@ -12,7 +12,7 @@ export const OfferCard: FC<OfferCardProps> = (props) => {
   const { itemName, photo, bonusesBase, bonusesAdditional } = props;
   return (
     <div className={styles.wrapper}>
-      <h2>{itemName}</h2>
+      <h2 className={styles.name}>{itemName}</h2>
       <div className={styles.image}>
         <Image src={photo ?? ''} alt={itemName ?? ''} />
       </div>
