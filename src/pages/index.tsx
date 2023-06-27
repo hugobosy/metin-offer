@@ -1,19 +1,11 @@
-import { Inter } from 'next/font/google';
-import { Layout } from '@/components/layout/Layout';
 import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { OfferCard } from '@/components/ui/offerCard/OfferCard';
-
-const inter = Inter({ subsets: ['latin'] });
+import { useGetOfferCard } from '@/hooks/queries/useGetOfferCard';
+import { HomePage } from '@/components/templates/Home/HomePage';
 
 export default function Home() {
-  return (
-    <>
-      <Layout>
-        <OfferCard />
-      </Layout>
-    </>
-  );
+  const { data: offer, isLoading: offerIsLoading } = useGetOfferCard();
+  return <HomePage offer={offer} />;
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {

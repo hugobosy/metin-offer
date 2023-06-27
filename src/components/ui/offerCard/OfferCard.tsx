@@ -1,12 +1,12 @@
 import styles from './OfferCard.module.scss';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import { ComponentPropsWithoutRef, FC } from 'react';
 
 export interface OfferCardProps extends ComponentPropsWithoutRef<'div'> {
   itemName?: string;
-  photo?: string;
-  bonusesBase?: string[];
-  bonusesAdditional?: string[];
+  photo?: StaticImageData;
+  bonusesBase?: { bonus: string }[];
+  bonusesAdditional?: { bonus: string }[];
 }
 export const OfferCard: FC<OfferCardProps> = (props) => {
   const { itemName, photo, bonusesBase, bonusesAdditional } = props;
@@ -20,14 +20,14 @@ export const OfferCard: FC<OfferCardProps> = (props) => {
         <ul>
           {bonusesBase?.map((bonus, index) => (
             <li>
-              {index} - {bonus}
+              {index + 1} - {bonus.bonus}
             </li>
           ))}
         </ul>
         <ul>
           {bonusesAdditional?.map((bonus, index) => (
             <li>
-              {index + 6} - {bonus}
+              {index + 6} - {bonus.bonus}
             </li>
           ))}
         </ul>

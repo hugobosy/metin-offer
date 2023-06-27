@@ -2,6 +2,15 @@ import { rangeArray } from '@/helpers/rangeArray';
 import { faker } from '@faker-js/faker';
 
 import sword from '@/assets/image/truta.png';
+import { StaticImageData } from 'next/image';
+
+export type OfferCardMockType = {
+  id: string;
+  itemName: string;
+  bonusesBase: { bonus: string }[];
+  bonusesAdditional: { bonus: string }[];
+  photo: StaticImageData;
+};
 
 export const items = ['Zatruty miecz', 'Tarcza tytanów', 'Ostrze zodiaku'];
 export const bonusesBase = ['Max hp 2000', 'Szansa na krytyk 10%', '8% omdlenie'];
@@ -12,13 +21,21 @@ export const bonusesAdditional = [
 ];
 export const photo = [sword];
 
-export const OfferCardMock = (count: number) =>
+export const OfferCardMock = (count: number): OfferCardMockType[] =>
   rangeArray(count).map(() => {
     return {
       id: faker.string.uuid(),
       itemName: faker.helpers.arrayElement(items),
-      bonusesBase: faker.helpers.arrayElement(bonusesBase),
-      bonusesAdditional: faker.helpers.arrayElement(bonusesAdditional),
+      bonusesBase: rangeArray(2).map(() => {
+        return {
+          bonus: faker.helpers.arrayElement(bonusesBase),
+        };
+      }),
+      bonusesAdditional: rangeArray(2).map(() => {
+        return {
+          bonus: faker.helpers.arrayElement(bonusesAdditional),
+        };
+      }),
       photo: faker.helpers.arrayElement(photo),
     };
   });
