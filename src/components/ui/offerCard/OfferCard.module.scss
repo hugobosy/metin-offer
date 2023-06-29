@@ -2,8 +2,8 @@
   width: 100%;
   padding: 50px;
   border-radius: 12px;
-  box-shadow: 0 5px 20px 10px rgba(0,0,0,.1);
-  background: linear-gradient(to bottom, #fea526 15%, #fde7c7 100%);
+  box-shadow: var(--shadow);
+  background: var(--gradient);
 }
 
 .name {

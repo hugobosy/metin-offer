@@ -26,7 +26,7 @@ export const OfferCardMock = (count: number): OfferCardMockType[] =>
     return {
       id: faker.string.uuid(),
       itemName: faker.helpers.arrayElement(items),
-      bonusesBase: rangeArray(2).map(() => {
+      bonusesBase: rangeArray(5).map(() => {
         return {
           bonus: faker.helpers.arrayElement(bonusesBase),
         };
